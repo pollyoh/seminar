@@ -1,0 +1,63 @@
+\documentclass[10pts]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[english]{babel}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amsmath} 
+\usepackage{setspace}
+\begin{document}
+
+\newtheorem*{theorem}{Theorem 1.6.8}
+\begin{theorem}
+Suppose $X_n \rightarrow X$ $a.s.$ Let $g,h$ be continuous functions \\with\\
+$(i) \, g \ge 0$ and $g(x) \rightarrow \infty $ as $|x| \rightarrow \infty, $ \\
+$(ii) \, |h(x)|\,/\,g(x) \rightarrow 0 $ as $|x| \rightarrow \infty ,$ \\
+$and \, (iii) \,\, Eg(Xn) \le K < \infty \,$ for all n. \\
+ Then $Eh(X_n) \rightarrow Eh(X).$ \end{theorem}
+\begin{proof}\begin{spacing}{1.2}
+By subtracting a constant from $h$, we can suppose without loss of\\
+generality that $ h(0) = 0.$ Pick M large so that $ P(|X| = M) = 0$ and
+$g(x)>0$ when $|x| \geq M$. Given a random variable $Y$,\, let $\bar{Y}=Y 1_{(|Y| \leq M)}$. 
+ Since $P(|X| = M) = 0, \, \bar{X_n} \rightarrow \bar{X} \,$ a.s. Since $h(\bar{X_n})$ is bounded and h is
+continuous, it follows from the bounded convergence theorem that
+\begin{enumerate}
+\item[$(a)$] \hfil $Eh\left(\bar{X}_n\right) \rightarrow E h(\bar{X})$
+\end{enumerate}
+To control the effect of the truncation, we use the following:
+\begin{enumerate}
+\item[$(b)$]\hfil $|E h(\bar{Y})-E h(Y)| \leq E|h(\bar{Y})-h(Y)| \leq E(|h(Y)| ;|Y|>M) \leq \epsilon_M E g(Y)$
+\end{enumerate}
+where $\epsilon_M =  \sup\{ |h(x)| /g(x) : |x| \ge M \}$. To check the second inequality,
+note that when $|Y | \le M, \bar{Y} = Y $, and we have supposed $h(0) = 0$. The
+third inequality follows from the definition of $\epsilon_M.$\\
+Taking $Y=X_n$ in (b) and using (iii), it follows that
+\begin{enumerate}
+\item[$(c)$]\hfil$\quad\left|E h\left(\bar{X}_n\right)-E h\left(X_n\right)\right| \leq K \epsilon_M$\end{enumerate}
+To estimate $|E h(\bar{X})-E h(X)|$, we observe that $g \geq 0$ and $g$ is continuous,\\
+so Fatou's lemma implies
+$$
+E g(X) \leq \liminf _{n \rightarrow \infty} E g\left(X_n\right) \leq K
+$$
+Taking $Y=X$ in (b) gives\\
+\begin{enumerate}
+\item[$(d)$]\hfil $|E h(\bar{X})-E h(X)| \leq K \epsilon_M$
+\end{enumerate}
+The triangle inequality implies
+$$
+\begin{align}
+    \left|E h\left(X_n\right)-E h(X)\right| & \leq\left|E h\left(X_n\right)-E h\left(\bar{X}_n\right)\right| \\
+& +\left|E h\left(\bar{X}_n\right)-E h(\bar{X})\right|+|E h(\bar{X})-E h(X)|
+\end{align}
+$$
+Taking limits and using (a), (c), (d), we have
+$$
+\limsup_{n \rightarrow \infty} |Eh(X_n)-Eh(X)| \leq 2 K \epsilon_M
+$$
+which proves the desired result since $K<\infty$ and $\epsilon_M \rightarrow 0$ as 
+$M \rightarrow \infty$.
+\end{spacing}
+\end{proof}
+
+\end{document}
+
+
