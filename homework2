@@ -1,0 +1,47 @@
+n=10000000;
+#vector operation
+x <- 1:n
+fun_vec <- function(){
+  z <- NULL;z[1] <- 0;
+  for(i in 1:length(x)){
+    z[i+1] <- x[i] + z[i]
+  }
+  return(z[length(x)+1])
+}
+start_time <- Sys.time()
+fun_vec()
+end_time <- Sys.time()
+elapsed_time1 <- as.numeric(difftime(time1 = end_time,
+                                    time2 = start_time,
+                                    units = "secs"))
+
+# for loop ���� ���� ��
+fun_loop <- function(n){
+  tmp <- 0
+  for(i in seq_len(n)){
+    tmp <- tmp + i
+  }
+  return(tmp)
+}
+end_time1 <- Sys.time()
+fun_loop(n)
+end_time2 <- Sys.time()
+elapsed_time2 <- as.numeric(difftime(time1 = end_time2,
+                                     time2 = end_time1,
+                                     units = "secs"))
+#lapply ���� ��
+end_time2 <- Sys.time()
+lapply(n,function(i){sum(1:n)} )
+end_time3 <- Sys.time()
+elapsed_time3 <- as.numeric(difftime(time1 = end_time3,
+                                     time2 = end_time2,
+                                     units = "secs"))
+#sapply ���� ��
+end_time3 <- Sys.time()
+sapply(n,function(i){sum(1:n)} )
+end_time4 <- Sys.time()
+elapsed_time4 <- as.numeric(difftime(time1 = end_time4,
+                                     time2 = end_time3,
+                                     units = "secs"))
+#�ð� ���ϴ� ��
+cat("elapsed time -> ",sprintf(" vector operation : %.3f , \n for loop : %.3f,\n lapply :  %.3f ,\n sapplay :  %.3f \n",elapsed_time1,elapsed_time2,elapsed_time3,elapsed_time4),sep="\n")
